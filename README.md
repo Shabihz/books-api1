@@ -1,2 +1,6 @@
-# assign10-api
-my next.js homweork
+# api rout in nextjs
+
+
+# app/api/books/route.ts
+
+   http://localhost:3000/api/books
