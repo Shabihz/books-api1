@@ -1,13 +1,14 @@
 import React from 'react'
-import Dashboard from './dashboard/page'
+import Hero from './hero/page'
 
-function page() {
+
+function Home() {
   return (
     <div>
+<Hero />
 
-      <Dashboard/>
     </div>
   )
 }
 
-export default page
+export default Home

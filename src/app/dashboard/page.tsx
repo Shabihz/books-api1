@@ -52,7 +52,7 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="container mx-auto p-8 bg-gradient-to-r from-black to-gray-800 min-h-screen">
+    <div className="container min-w-full p-8 bg-gradient-to-r from-black to-sky-900 min-h-screen ">
       <h1 className="text-5xl font-bold text-center text-white mb-12">Library Management</h1>
 
       {/* Add Book Form */}

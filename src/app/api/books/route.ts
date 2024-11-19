@@ -2,10 +2,13 @@
 import { NextResponse } from "next/server";
 
 let books = [
-  { id: 1, title: "Harry portter", author: "j.k rowling", available: true },
-  { id: 2, title: "Revive Your Heart", author: "Nouman Ali Khan", available: true },
-  { id: 3, title: "Main Anmol", author: "Aapa Anmol", available: true },
-  { id: 4, title: "Tale of Izrail", author: "Allama Iqbal", available: false },
+  { id: 1, title: "The Great Gatsby", author: "F. Scott Fitzgerald", available: true },
+  { id: 2, title: "To Kill a Mockingbird", author:"Harper Lee", available: true },
+  { id: 3, title: "1984", author: "George Orwell", available: true },
+  { id: 4, title: "Harry Potter", author: "J.K Rowling", available: false },
+    {id: 5, title: "Pride and Prejudice", author: "Jane Austen", available: true },
+    {id: 6, title: "War and Peace", author: "Leo Tolstoy", available: false },
+  
 
 ];
 
@@ -59,17 +62,18 @@ export async function PUT(request: any) {
 }
 
 
+
 export async function DELETE(request: { json: () => PromiseLike<{ id: any; }> | { id: any; }; }) {
   try {
     const { id } = await request.json(); // Expecting the book ID to delete
     const index = books.findIndex((book) => book.id === id);
     
-    if (index === -1) {
+  if (index === -1) {
       return NextResponse.json(
-        { message: "Book not found" },
+       { message: "Book not found" },
         { status: 404 }
       );
-    }
+}
 
     books.splice(index, 1); // Delete the book from the array
 
