@@ -44,7 +44,7 @@ export async function POST(request: any) {
 }
 export async function PUT(request: any) {
   try {
-    const updatedBookData = await request.json(); // Read JSON data once
+    const updatedBookData = await request.json(); 
     const { id } = updatedBookData;
     const index = books.findIndex((book) => book.id === id);
     
@@ -63,28 +63,19 @@ export async function PUT(request: any) {
 
 
 
-export async function DELETE(request: { json: () => PromiseLike<{ id: any; }> | { id: any; }; }) {
-  try {
-    const { id } = await request.json(); // Expecting the book ID to delete
-    const index = books.findIndex((book) => book.id === id);
-    
-  if (index === -1) {
-      return NextResponse.json(
-       { message: "Book not found" },
-        { status: 404 }
-      );
-}
 
-    books.splice(index, 1); // Delete the book from the array
+export async function DELETE(request: Request) {
+    try {
 
-    return NextResponse.json(
-      { message: "Book deleted successfully" },
-      { status: 200 }
-    );
-  } catch (error) {
-    return NextResponse.json(
-      { message: "Error deleting book" },
-      { status: 500 }
-    );
-  }
+        const { id } = await request.json();
+
+        console.log(`Deleting book with id: ${id}`);
+
+       
+        return NextResponse.json({ message: `Book with id ${id} deleted successfully.` });
+    } catch (error) {
+     
+        console.error('Error deleting book:', error);
+        return NextResponse.json({ error: 'Failed to delete book.' }, { status: 500 });
+    }
 }
